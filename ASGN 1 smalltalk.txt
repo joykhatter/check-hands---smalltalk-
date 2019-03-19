@@ -1,0 +1,318 @@
+winner: h1 vs: h2
+	| a b c d e f g h i j min x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 y1 y2 y3 y4 y5 y6 y7 y8 y9 y10 sx sy tx2 tx3 tx4 tx5 ty2 ty3 ty4 ty5|
+
+	i:=1.
+	[i<10]whileTrue:[
+		j:= i+2.
+		[j<10]whileTrue: [
+			a:= h1 at: j.
+			b:= h1 at: i.
+			a=b
+			ifTrue:[
+				c:=j+1.
+				d:=i+1.
+				e:=h1 at: c.
+				f:= h1 at:d.
+				e=f
+				ifTrue: [
+					Transcript show: 'Invalid cards'.
+					^0.
+					].
+				].
+			j:=j+2.
+		].
+		i:=i+2.
+	].
+	i:=1.
+	[i<10]whileTrue:[
+		j:= i+2.
+		[j<10]whileTrue: [
+			a:= h2 at: j.
+			b:= h2 at: i.
+			a=b
+			ifTrue:[
+				c:=j+1.
+				d:=i+1.
+				e:=h2 at: c.
+				f:= h2 at:d.
+				e=f
+				ifTrue: [
+					Transcript show: 'Invalid cards'.
+					^0.
+					].
+				].
+			j:=j+2.
+		].
+		i:=i+2.
+	].
+	i:=1.
+	[i<10]whileTrue:[
+		j:= i.
+		[j<10]whileTrue: [
+			a:= h2 at: j.
+			b:= h1 at: i.
+			a=b
+			ifTrue:[
+				c:=j+1.
+				d:=i+1.
+				e:=h2 at: c.
+				f:= h1 at:d.
+				e=f
+				ifTrue: [
+					Transcript show: 'Invalid cards'.
+					^0.
+					].
+				].
+			j:=j+2.
+		].
+		i:=i+2.
+	].
+
+
+	i:= 1.
+	[i<10]whileTrue:[
+		min:= i.
+		j:= i+2.
+		[j<10]whileTrue:[
+			a:= h1 at: j.
+			b:= h1 at: min.
+			a<b
+			ifTrue:[
+				min:= j.
+				].
+			j:= j+2.
+		].
+		c:= h1 at: i.
+		d:= h1 at: min.
+		h1 at: i put: d.
+		h1 at: min put:c.
+		e:= i+1.
+		f:=min+1.
+		g:= h1 at:e.
+		h:= h1 at: f.
+		h1 at: f put: g.
+		h1 at:e put: h.
+		i:= i+2.
+	]. 
+
+	i:= 1.
+	[i<10]whileTrue:[
+		min:= i.
+		j:= i+2.
+		[j<10]whileTrue:[
+			a:= h2 at: j.
+			b:= h2 at: min.
+			a<b
+			ifTrue:[
+				min:= j.
+				].
+			j:= j+2.
+		].
+		c:= h2 at: i.
+		d:= h2 at: min.
+		h2 at: i put: d.
+		h2 at: min put:c.
+		e:= i+1.
+		f:=min+1.
+		g:= h2 at:e.
+		h:= h2 at: f.
+		h2 at: f put: g.
+		h2 at:e put: h.
+		i:= i+2.
+	]. 
+			
+	x1:= h1 at: 1.
+	x2:= h1 at: 2.
+	x3:= h1 at: 3.
+	x4:= h1 at: 4.
+	x5:= h1 at: 5.
+	x6:= h1 at: 6.
+	x7:= h1 at: 7.
+	x8:= h1 at: 8.
+	x9:= h1 at: 9.
+	x10:= h1 at: 10.
+	y1:= h2 at: 1.
+	y2:= h2 at: 2.
+	y3:= h2 at: 3.
+	y4:= h2 at: 4.
+	y5:= h2 at: 5.
+	y6:= h2 at: 6.
+	y7:= h2 at: 7.
+	y8:= h2 at: 8.
+	y9:= h2 at: 9.
+	y10:= h2 at: 10.
+	sx := 0.
+	sy := 0.
+	tx2 := x1 +1.
+	tx3 := x1 +2.
+	tx4 := x1+3.
+	tx5 := x1+4.
+	ty2 := y1 +1.
+	ty3 := y1 +2.
+	ty4 := y1+3.
+	ty5 := y1+4.
+	
+	(x1=10)&(x3=11)&(x5=12)&(x7=13)&(x9=14)&(x4=x2)&	(x6=x2)&(x8=x2)&	(x10=x2)&(sx=0)
+	ifTrue:[
+		sx:=10.
+		].
+	
+	(y1=10)&(y3=11)&(y5=12)&(y7=13)&(y9=14)&(y4=y2)&(y6=y2)&(y8=y2)&(y10=y2)&(sy=0)
+	ifTrue:[
+		sy:=10.
+		].
+	
+	(x3=tx2)&(x5=tx3)&(x7=tx4)&(x9=tx5)&(x4=x2)&(x6=x2)&(x8=x2)&(x10=x2)&(sx=0)
+	ifTrue:[
+		sx:=9.
+		].		
+			
+	(y3=ty2)&(y5=ty3)&(y7=ty4)&(y9=ty5)&(y4=y2)&(y6=y2)&(y8=y2)&(y10=y2)&(sy=0)
+	ifTrue:[
+		sy:=9.
+		].			
+
+	(x1=x3)&(x1=x5)&(x1=x7)&(sx=0)
+	ifTrue:[
+		sx:=8.
+		].
+	(x3=x5)&(x3=x7)&(x3=x9)&(sx=0)
+	ifTrue:[
+		sx:=8.
+		].
+	(y1=y3)&(y1=y5)&(y1=y7)&(sy=0)
+	ifTrue:[
+		sy:=8.
+		].
+	(y3=y5)&(y3=y7)&(y3=y9)&(sy=0)
+	ifTrue:[
+		sy:=8.
+		].
+	
+	(x1=x3)&(x1=x5)&(x7=x9)&(sx=0)
+	ifTrue:[
+		sx:=7.
+		].
+	(x1=x3)&(x5=x7)&(x5=x9)&(sx=0)
+	ifTrue:[
+		sx:=7.
+		].
+	(y1=y3)&(y1=y5)&(y7=y9)&(sy=0)
+	ifTrue:[
+		sy:=7.
+		].
+	(y1=y3)&(y5=y7)&(y5=y9)&(sy=0)
+	ifTrue:[
+		sy:=7.
+		].
+
+	(x4=x2)&(x6=x2)&(x8=x2)&(x10=x2)&(sx=0)
+	ifTrue:[
+		sx:=6.
+		].
+	(y4=y2)&(y6=y2)&	(y8=y2)&(y10=y2)&(sy=0)
+	ifTrue:[
+		sy:=6.
+		].
+	
+	(x3=tx2)&(x5=tx3)&(x7=tx4)&(x9=tx5)&(sx=0)
+	ifTrue:[
+		sx:=5.
+		].
+	(y3=ty2)&(y5=ty3)&(y7=ty4)&(y9=ty5)&(sy=0)
+	ifTrue:[
+		sy:=5.
+		].
+	
+	(x1=x3)&(x1=x5)&(sx=0)
+	ifTrue:[
+		sx:=4.
+		].
+	(x3=x5)&(x3=x7)&(sx=0)
+	ifTrue:[
+		sx:=4.
+		].
+	(x5=x7)&(x5=x9)&(sx=0)
+	ifTrue:[
+		sx:=4.
+		].
+	(y1=y3)&(y1=y5)&(sy=0)
+	ifTrue:[
+		sy:=4.
+		].
+	(y3=y5)&(y3=y7)&(sy=0)
+	ifTrue:[
+		sy:=4.
+		].
+	(y5=y7)&(y5=y9)&(sy=0)
+	ifTrue:[
+		sy:=4.
+		].
+	
+	(x1=x3)&(x5=x7)&(sx=0)
+	ifTrue:[
+		sx:=3.
+		].
+	(x1=x3)&(x7=x9)&(sx=0)
+	ifTrue:[
+		sx:=3.
+		].
+	(x3=x5)&(x7=x9)&(sx=0)
+	ifTrue:[
+		sx:=3.
+		].
+	(y1=y3)&(y5=y7)&(sy=0)
+	ifTrue:[
+		sy:=3.
+		].
+	(y1=y3)&(y7=y9)&(sy=0)
+	ifTrue:[
+		sy:=3.
+		].
+	(y3=y5)&(y7=y9)&(sy=0)
+	ifTrue:[
+		sy:=3.
+		].
+	
+	(sx=0)
+	ifTrue:[
+		(x1=x3)|(x3=x5)|(x5=x7)|(x7=x9)
+		ifTrue:[
+			sx:=2.
+			].
+	].
+	(sy=0)
+	ifTrue:[
+		(y1=y3)|(y3=y5)|(y5=y7)|(y7=y9)
+		ifTrue:[
+			sy:=2.
+			].
+	].
+	
+	
+	(sx>sy)
+	ifTrue:[
+		Transcript show: 'hand 1 is the winner'.
+		^1.
+		].
+	(sx<sy)
+	ifTrue:[
+		Transcript show: 'hand 2 is the winner'.
+		^2.
+		].
+	(sx=sy)&(x9>y9)
+	ifTrue:[
+		Transcript show: 'hand 1 is the winner'.
+		^1.
+		].
+	(sx=sy)&(x9<y9)
+	ifTrue:[
+		Transcript show: 'hand 2 is the winner'.
+		^2.
+		].
+	(sx=sy)&(x1=y1)
+	ifTrue:[
+		Transcript show: 'No winner'.
+		^0.
+		].	
+	
